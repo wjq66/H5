@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #imgContainer {
+            background-color: aquamarine;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="imgContainer"></div>
+    <div id="msg"></div>
+
+    <script>
+        var imgContainer,msgDiv;
+        window.onload = function () {
+            imgContainer = document.getElementById("imgContainer");
+            msgDiv = document.getElementById("msg");
+            
+            imgContainer.ondragover = function(e){
+                e.preventDefault();
+            }
+            imgContainer.ondrop = function(e) {
+                e.preventDefault();
+                //showObj(e.dataTransfer.files);
+                
+                var f = e.dataTransfer.files[0];    //拖动文件列表
+                var fileReader = new FileReader();
+                fileReader.onload = function(e){
+                    /*showObj(e.target);*/
+                    imgContainer.innerHTML = "<img src = \""+fileReader.result+"\">";
+                }
+                fileReader.readAsDataURL(f);    //fileReader用来读取指定file的内容。预览本地图片用readAsDataURL方法，通过将图片读取成Data Url的方法将图片显示出来。
+            }
+        }
+        
+        function showObj(obj) {
+            var s = "";
+            for (var k in obj) {
+                s += k + ":" + obj[k] + "<br>"
+            }
+            msgDiv.innerHTML = s;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <script>
+        var WIDTH = 500;
+        var HEIGHT = 500;
+        var mycanvas ,context;
+        window.onload = function(){
+            createCanvas();
+            //drawRect();
+            drawImage();
+        }
+        function createCanvas(){
+            document.body.innerHTML = "<canvas id=\"mycanvas\" width=\""+WIDTH+"\" height=\""+HEIGHT+"\">";
+            mycanvas = document.getElementById("mycanvas");
+            context = mycanvas.getContext("2d");
+        }
+        
+        function drawRect(){
+            context.fillStyle = "#f00";
+            context.rotate(45);
+            context.fillRect(0,0,200,200);
+        }
+        
+        function drawImage(){   //绘制图片
+            var img = new Image();
+            img.onload = function(){
+                context.drawImage(img,0,0);
+            }
+            img.src = "images/2001.jpg";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
