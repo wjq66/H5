@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv" style="color:red">
+        这段文字是用来删除的
+    </div>
+    <button onclick="deleteChar()">删除文字</button><br><br>
+    <!--setStartBefore:用于将某个节点的起点设为Range对象所代表的的起点位置。setStartAfter：某个节点的重点，设为range对象所代表的起点。setEndBefore:用于将某个节点的起点设为Range对象所代表的的终点位置。setEndAfter:用于将某个节点的终点设为Range对象所代表的的终点位置-->
+    <table id="myTable" border="1" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>内容一</td>
+            <td>内容二</td>
+        </tr>
+        <tr>
+            <td>内容三</td>
+            <td>内容四</td>
+        </tr>
+    </table>
+    <button onclick="deleteRow()">删除第一行</button>
+    <script>
+        function deleteChar(){
+            var div = document.getElementById("myDiv");
+            var textNode = div.firstChild;
+            var rangeObj = document.createRange();
+            rangeObj.setStart(textNode,1);  /*设置节点的起始位置*/
+            rangeObj.setEnd(textNode,4);/*设置节点的结束位置*/
+            rangeObj.deleteContents();
+        }
+        
+        function deleteRow(){
+            var table = document.getElementById("myTable");
+            if(table.rows.length > 0){
+                var row = table.rows[0];
+                var rangeObj = document.createRange();
+                rangeObj.setStartBefore(row);   
+                rangeObj.setEndAfter(row);
+                rangeObj.deleteContents();
+            }
+        }
+    </script>
+</body>
+</html>

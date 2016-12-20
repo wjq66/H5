@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>拖动</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+        }
+        #box1 {
+            background-color: aquamarine;
+            float: left;
+        }
+        #box2 {
+            background-color: #ccc;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+    <img id="img1" src="images/wjq.jpg" alt="">
+    <div id="msg"></div>
+
+    <script>
+        var box1Div, box2Div, msgDiv, img1;
+        window.onload = function () {
+            box1Div = document.getElementById("box1");
+            box2Div = document.getElementById("box2");
+            msgDiv = document.getElementById("msg");
+            img1 = document.getElementById("img1");
+            /*box1Div.ondragenter = function (e) { //监听事件
+                showObj(e);
+            }*/
+            box1Div.ondragover = function (e) {
+                e.preventDefault();
+            }
+            box2Div.ondragover = function (e) {
+                e.preventDefault();
+            }
+
+            img1.ondragstart = function (e) {
+                e.dataTransfer.setData("imgId", "img1");//添加自定义数据格式
+            }
+
+            box1Div.ondrop = dropImgHandler;
+            box2Div.ondrop = dropImgHandler;
+        }
+
+        function dropImgHandler(e) {
+            showObj(e.dataTransfer);
+            e.preventDefault();
+            //创建节点
+            var img = document.getElementById(e.dataTransfer.getData("imgId")); //获取自定义的数据格式，
+            e.target.appendChild(img);  //e.target表示当前目标。见知识补充
+        };
+
+        function showObj(obj) {
+            var s = "";
+            for (var k in obj) {
+                s += k + ":" + obj[k] + "<br>";
+            }
+            msgDiv.innerHTML = s;
+        };
+        
+        /*知识点补充：
+             1、ondragover 事件在可拖动元素或选取的文本正在拖动到放置目标时触发。默认情况下，数据/元素不能放置到其他元素中。 如果要实现改功能，我们需要防止元素的默认处理方法。我们可以通过调event.preventDefault() 方法来实现 ondragover 事件。
+             2、 具体问题具体分析；当前目标。在event事件中代表点击对象；loader事件：加载对象；e只是参数，任意取值；对应即可；e.target 是目标对象，e.event是目标所发生的事件。
+        */
+    </script>
+</body>
+
+</html>
