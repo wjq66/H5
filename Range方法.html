@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!--cloneRange,对range对象进行复制，-->
+    <p id="p">这是是随便书写的内容</p>
+    <button onclick="cloneRange()">克隆</button>
+    <!--cloneContents,在页面上追加一段html代码，点击克隆并放到页面上进行承载，-->
+    <div id="div">
+        你好吗？
+        <br/>
+        <button onclick="cloneContent()">克隆</button>
+        <br/>
+    </div>
+    
+    <!--extractContents元素,-->
+    <div id="srcdiv" style="background-color:aquamarine;width:300px;height:50px;">你好么？</div>
+    <div id="distdiv" style="background-color:bisque;width:300px;height:50px"></div>
+    <button onclick="moveContent()">移动元素</button>
+    
+    <!--collapse方法，range的终点移到起点，或起点移到终点-->
+    <div id="div1" style="background-color:bisque;width:300px;height:50px;">需要显示的元素</div>
+    <button onclick="selectRangeContents()">选择元素</button>
+    <button onclick="unselect()">取消元素</button>
+    <button onclick="showRange()">显示Range内容</button>
+    <!--detach方法，释放不需要使用的对象，提高性能-->
+    <!--rangeObj.detach();-->
+    
+    <!--insertNode,插入到range中一些东西-->
+    <div onmouseup="" style="width:400px;background-color:bisque" onclick="moveButton()"> 这是我随便书写的一些文字，这是我随便书写的一些文字这是我随便书写的一些文字这是我随便书写的一些文字这是我随便书写的一些文字</div>
+    <button id="button">按钮</button><br>
+    
+   <!--compareBoundaryPoints 用于比较两个range对象的起点或终点位置，-->
+    这是一段文组，我也不知道偶要谢谢什么<b id="boldTest">啊</b>，我也不知道些什么，随便都可以了<br>
+    <button onclick="testPlace()">位置比较</button>
+    
+    
+    <script>
+        function cloneRange(){
+            var rangeObj = document.createRange();
+            rangeObj.selectNodeContents(document.getElementById("p"));
+            var rangeClone = rangeObj.cloneRange();
+            alert(rangeClone.toString());
+        }
+        
+        function cloneContent(){
+            var div = document.getElementById("div");
+            var rangeObj = document.createRange();
+            rangeObj.selectNodeContents(div);/*获取当前div的内容*/
+            var docFrangMent = rangeObj.cloneContents();
+            div.appendChild(docFrangMent);
+        }
+        
+        function moveContent(){
+            var srcdiv = document.getElementById("srcdiv");
+            var distdiv = document.getElementById("distdiv");
+            var rangeObj = document.createRange();
+            rangeObj.selectNodeContents(srcdiv);
+            var doc = rangeObj.extractContents();
+            distdiv.appendChild(doc);
+        }
+        
+        var rangeObj = document.createRange();
+        function selectRangeContents(){
+            var div = document.getElementById("div1");
+            rangeObj.selectNode(div);
+        }
+        function unselect(){
+            rangeObj.collapse(false);
+        }
+        function showRange(){
+            alert(rangeObj.toString());
+        }
+        
+        function moveButton(){
+            var btn = document.getElementById("button");
+            var selection = document.getSelection();
+            if(selection.rangeCount > 0){
+                var range = selection.getRangeAt(0);
+                range.insertNode(btn);
+            }
+        }
+        
+        function testPlace(){
+            var boldText = document.getElementById("boldTest");
+            var boldRange = document.createRange();
+            boldRange.selectNodeContents(boldText.firstChild);
+            var selection = document.getSelection();
+            if(selection.rangeCount>0){
+                var selRange = selection.getRangeAt(0);
+                if(selRange.compareBoundaryPoints(Range.START_TO_END,boldRange)){
+                    alert("选取的文字在粗图前面");
+                }else{
+                    if(selRange.compareBoundaryPoints(Range.END_TO_START,boldRange)){
+                        alert("选择的文字在粗体后面");
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

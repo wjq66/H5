@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!--figure元素以及figcaption元素,figure表示一个独立的内容，figcaption元素表示figure的标题，-->
+    <figure>
+        <img src="images/2006.jpg">
+        <figcaption>风景</figcaption><!--只能有一个-->
+    </figure>
+    <!--details元素和summary元素-->
+    <details id="dateil" onclick="detail_onclick(this)">
+        <summary>速度与激情</summary>
+        <p id="p" style="visibility:hidden">你好吗，</p>
+    </details>
+    <!--mark元素,高亮的效果-->
+    <p>zheshiyiduanwenzi ,yonglai<mark>shishi</mark>yuanus</p>
+    
+    <script>
+        function detail_onclick(detail){
+            var  p = document.getElementById("p");
+            if(detail.open){
+                p.style.visibility = "hidden";
+            }else{
+                p.style.visibility = "visible";
+            }
+        }
+    </script>
+</body>
+</html>

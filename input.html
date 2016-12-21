@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+   <!--control,在HTML5中，可以在标签内部防止一个表单元素，并且通过该标签的control属性来访问该表单元素(见js),placeholder提示内容-->
+    <form action="">
+        <label id="label">
+           邮编：
+            <input id="txt_zip" maxlength="6" placeholder="123">
+            <small>请输入六位数字</small>
+        </label>
+        <input type="button" value="设置默认值"  onclick="setValue()"><br>
+        <input type="checkbox" indeterminate id="cd">属性测速
+    </form>
+    <!--image提交按钮的宽度和高度-->
+    <form action="" method="post">
+        姓名：<input type="text" name="name">
+        <input type="image" src="images/2006.jpg" alt="编辑" width="50" height="50">
+    </form>
+    <!--为单行文本框添加了一个list属性，该属性的值为某个datalist元素的id，datalist元素也是h5新增的元素，类似于选择框，-->
+    <form>
+    <input type="text" name="greeting" list="greetings">
+    <datalist id="greetings" style="dsiplay:none">
+        <option value="HTML5学习">HTML5学习</option>
+        <option value="Android学习">Android学习</option>
+        <option value="iOS学习">iOS学习</option>
+    </datalist>
+    </form>
+    <!--autocomplete 属性规定表单是否应该启用自动完成功能。在安全方面得到控制-->
+    <input type="text" name="greeting" autocomplete="on" list="greetings">
+    <!--pattern属性，将属性值设为某个格式的正则表达式，在提交时会针对这些进行检查，检查内容是否符合给定格式。-->
+    <form action="">
+        请输入内容
+        <input pattern="[A-Z]{3}" name="part">
+        <input type="submit">
+    </form>
+    <!--SelectionDirection属性，对input元素与textarea元素，当在这两个元素中用鼠标选取部分文字时，可以使用该属性来获取选取方向，当用户正向选取文字时，改属性值为“forward”，反向时，属性值为“backward”-->
+    <form>
+        <input type="text" name="text">
+        <input type="button" value="点击我" onclick="AD()">
+    </form>
+    
+    <script>
+        function setValue(){
+            var label = document.getElementById("label");
+            var textbox  =  label.control;
+            textbox.value = "111111";
+        }
+        var cd = document.getElementById("cd");
+        cd.indeterminate = true;
+        
+        function AD(){
+            var control = document.forms[0]['text'];
+            var Direction = control.getSelectionDirection;
+            alert(Direction);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+   <!--textarea包含在form在外部，用form指定到具体id-->
+   <!--使用formaction来单独的一个提交地址，（以前是在form中添加action来增加地址）-->
+   <!--formtarget在不同的位置打开新的标签-->
+  <!--formmethod是指用get/post-->
+    <form id="text">
+        <input type="submit" name="s1" value= "v1" formaction="httpget" formmethod="get">
+        <input type="submit" name="s1" value= "v1" formaction="httppost" formmethod="post">
+        <input type="text" name="s11" value= "v11" formaction="http:" autofocus>
+        <input type="submit" name="s2" value="v2" formtarget="_blank">
+        <input type="submit" name="s3" value="v3" formtarget="_self">
+        <input type="submit" name="s4" value="v4" formtarget="_parent">
+        <input type="submit" name="s5" value="v5" formtarget="_top">
+        <input type="submit" name="s6" value="v6" formtarget="framename">
+    </form>
+    <textarea form="text" id="" cols="30" rows="10"></textarea>
+     <!--required用来检验输入是否为空，-->
+    <form>
+        <input type="text" required>
+        <button type="submit">提交</button>
+    </form>
+    <!--labels的使用，在表单验证时添加语句-->
+    <form id="testform">
+        <label id="label" for="txt_name">姓名：</label>
+        <input id="txt_name">
+        <input type="button" id="btnValidate" value="验证" onclick="Validate()">
+    </form>
+    <!--在H5中，可以使用formenctype属性对表单元素分别指定不同的编码方式-->
+    <form>
+    <input type="text" formenctype="text/plain">
+    <input type="text" formenctype="multipart/form-data">
+    <input type="text" formenctype="application/x-www-form-urlencoded">
+    </form>
+    
+    <script>
+        function Validate(){
+            var txtName = document.getElementById("txt_name");
+            var button = document.getElementById("btnValidate");
+            var form = document.getElementById("testform");
+            if(txtName.value.trim() == ""){
+                var label = document.createElement("label");
+                label.setAttribute("for","txt_name");
+                form.insertBefore(label,button);
+                txtName.labels[1].innerHTML = "请输入姓名";
+                txtName.labels[1].setAttribute("style","font-size:9px;color:red");
+            }
+        }
+    </script>
+</body>
+
+</html>
