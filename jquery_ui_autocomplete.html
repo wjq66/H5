@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jq/jquery-3.0.0/jquery-3.0.0.min.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <link href="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+    <label for="tags">Tages:</label>
+    <input id="tags">
+    
+    <script>
+        $(document).ready(function(){
+            var autotaos = ["iwen","ime","html","css","javascript","java"];
+            $("#tags").autocomplete({
+                source:autotaos
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jq/jquery-3.0.0/jquery-3.0.0.min.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <link href="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+    <div id="div">
+        <p>这是一个对话框</p>
+    </div>
+    <a id="btn">按钮</a>
+    
+    <script>
+        $(function(){
+            $("#btn").button().on("click",function(){
+                $("#div").dialog();
+            })
+        })
+    </script>
+</body>
+</html>

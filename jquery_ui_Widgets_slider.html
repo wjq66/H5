@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jq/jquery-3.0.0/jquery-3.0.0.min.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <link href="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+    <span id="span">0</span>
+    <div id="slider"></div>
+    
+    <script>
+        var valueSpan,slider;
+        $(document).ready(function(){
+            //$("#slider").slider();
+            slider = $("#slider");
+            valueSpan = $("#span");
+            
+            slider.slider({
+                slide:function(event,ui){
+                    valueSpan.text(slider.slider("option","value"));
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-3.0.0/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+    
+    
+    <script>
+        $(document).ready(function(){
+            $("body").text("wait...");
+            $("body").load("main.htm",function(a,status,c){
+                if(status == "error"){
+                    $("body").text("判断加载失败");
+                }
+            });
+            $.getScript("main.js").complete(function(){
+                sayHello();
+            });
+        });
+    </script>
+</body>
+</html>

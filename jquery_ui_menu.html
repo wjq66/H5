@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jq/jquery-3.0.0/jquery-3.0.0.min.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <link href="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <style>
+        #menu{
+            width: 150px;
+        }
+        .ui-menu:after{
+            content:".";
+            display: :block;
+            clear:both;
+            visibility: hidden;
+            line-height: 0;
+            height: 0;
+        }
+        .ui-menu .ui-menu-item{
+            display:inline-block;
+            float: left;
+            margin: 10;
+            padding: 10;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+        <li>
+            <a href="#">java</a>
+            <ul>
+                <li><a href="#">java ee</a></li>
+                <li><a href="#">java ce</a></li>
+                <li><a href="#">java me</a></li>
+            </ul>
+        </li>
+        <li>c</li>
+        <li>c++</li>
+        <li>html</li>
+    </ul>
+    
+    <script>
+        $(document).ready(function(){
+            $("#menu").menu({position:{at:"left bottom"}});
+        })
+    </script>
+</body>
+
+</html>

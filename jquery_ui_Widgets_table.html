@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jq/jquery-3.0.0/jquery-3.0.0.min.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <link href="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#hello1">hello</a></li>
+            <li><a href="#hello2">hello</a></li>
+            <li><a href="#hello3">hello</a></li>
+        </ul>
+        <div id="hello1">
+            hello1
+            hello1
+            hello1
+        </div>
+         <div id="hello2">
+            hello2
+            hello2
+            hello2
+        </div>
+         <div id="hello3">
+            hello3
+            hello3
+            hello3
+        </div>
+        
+    </div>
+    
+    <script>
+        $(function(){
+            $("#tabs").tabs();
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+  <!--  <script src="jq/jquery-3.0.0/jquery-3.0.0.min.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <link href="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    或者下面的连接
+    -->
+    <script src="jq/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+    <script src="jq/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <link rel="stylesheet" href="jq/jquery-ui-1.10.4.custom/css/base/jquery-ui-1.10.4.custom.css">
+</head>
+<body>
+    <div id="Rect1" style="width:100px;height:100px;border:1px solid #f0f"></div>
+    <div id="Rect2" style="width:200px;height:200px;border:1px solid #f00"></div>
+    
+    <script>
+        $(document).ready(function(){
+            $("#Rect1").draggable();
+            $("#Rect2").droppable();
+            /*放置事件*/
+            $("#Rect2").on("drop",function(event,ui){
+                $("#Rect2").text("drop事件");
+            })
+        })
+    </script>
+</body>
+</html>
